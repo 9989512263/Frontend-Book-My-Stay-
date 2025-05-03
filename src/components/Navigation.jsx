@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 
-//ghuhhihjiojo
+//hi kiran 
+
 const NavBar = ({ homeRef, aboutRef, contactRef, setisAuthenticated }) => {
     const navigate = useNavigate();
     const [searchInput, setSearchInput] = useState("");
