@@ -13,7 +13,7 @@ function Verifycode() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('https://backend-book-my-stay.vercel.app/api/verifyotp', {
+            const response = await axios.post('https://backend-book-my-stay-production.up.railway.app/api/verifyotp', {
                 otp,
                 email,
             });

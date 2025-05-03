@@ -34,7 +34,7 @@ function PriceDetails({ roomdetail }) {
     //     const totalPrice = roomdetail.price * nights * selectedGuests + roomdetail.serviceFee + roomdetail.cleaningFee;
 
     //     try {
-    //         const response = await axios.post("https://backend-book-my-stay.vercel.app/api/book", {
+    //         const response = await axios.post("https://backend-book-my-stay-production.up.railway.app/api/book", {
     //             userEmail,
     //             hotelId: roomdetail.hotelId,
     //             hotelName: roomdetail.hotelName,

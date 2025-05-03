@@ -15,7 +15,7 @@ function HotelPage({ setisAuthenticated }) {
     const { id } = useParams();
     const [hotelData, setHotelData] = useState(null);
     useEffect(() => {
-        axios.get(`https://backend-book-my-stay.vercel.app/api/hotels/${id}`)
+        axios.get(`https://backend-book-my-stay-production.up.railway.app/api/hotels/${id}`)
             .then(response => {
                 setHotelData(response.data);
             })

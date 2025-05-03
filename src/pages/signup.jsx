@@ -37,7 +37,7 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post('https://backend-book-my-stay.vercel.app/api/signup', {
+      const response = await axios.post('https://backend-book-my-stay-production.up.railway.app/api/signup', {
         name,
         email,
         password,

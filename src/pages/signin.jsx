@@ -24,7 +24,7 @@ function Signin({ setisAuthenticated }) {
             return;
         };
         try {
-            const response = await axios.post("https://backend-book-my-stay.vercel.app/api/signin", {
+            const response = await axios.post("https://backend-book-my-stay-production.up.railway.app/api/signin", {
                 email,
                 password
             })
