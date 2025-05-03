@@ -13,7 +13,7 @@ function Subscribe(){
             toast.error("please enter the email");
         }
         try{
-            const response=await axios.post("http://localhost:5000/api/subsuccess",{
+            const response=await axios.post("https://backend-book-my-stay.vercel.app/api/subsuccess",{
                 email
             })
             if(response.data.message){

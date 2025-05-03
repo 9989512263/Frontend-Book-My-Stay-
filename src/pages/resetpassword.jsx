@@ -28,7 +28,7 @@ function Resetpassword() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/resetpassword', {
+            const response = await axios.post('https://backend-book-my-stay.vercel.app/api/resetpassword', {
                 email,
                 newPassword: password,
             });

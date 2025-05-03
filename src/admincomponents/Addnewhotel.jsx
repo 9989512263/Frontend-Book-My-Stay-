@@ -56,7 +56,7 @@ function Addnewhotel() {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/api/addhotel', {
+            const response = await axios.post('https://backend-book-my-stay.vercel.app/api/addhotel', {
                 name: formData.name,
                 roomCount: formData.roomCount,
                 starRating: formData.starRating,

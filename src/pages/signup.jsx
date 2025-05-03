@@ -37,7 +37,7 @@ function SignUp() {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', {
+      const response = await axios.post('https://backend-book-my-stay.vercel.app/api/signup', {
         name,
         email,
         password,

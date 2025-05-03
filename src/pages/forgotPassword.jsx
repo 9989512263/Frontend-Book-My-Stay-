@@ -12,7 +12,7 @@ function ForgotPassword() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/sendotp', {
+            const response = await axios.post('https://backend-book-my-stay.vercel.app/api/sendotp', {
                 email,
             })
             if (response.data.message) {

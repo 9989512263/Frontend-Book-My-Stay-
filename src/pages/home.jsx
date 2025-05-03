@@ -23,7 +23,7 @@ function Home({setisAuthenticated}) {
         console.log("useEffect is running");
         const fetchHotels = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/getallhotels');
+                const response = await axios.get('https://backend-book-my-stay.vercel.app/api/getallhotels');
                 console.log("Fetched hotels:", response.data);
                 setHotels(response.data);
 

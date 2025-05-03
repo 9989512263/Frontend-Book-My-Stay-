@@ -23,7 +23,7 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
 
     useEffect(() => {
         axios
-            .post("http://localhost:5000/api/payment", { amount })
+            .post("https://backend-book-my-stay.vercel.app/api/payment", { amount })
             .then((res) => {
                 setClientSecret(res.data.clientSecret);
             })
@@ -58,7 +58,7 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
 
             // ✅ Send booking details to backend
             try {
-                const res = await axios.post("http://localhost:5000/api/book", bookingDetails);
+                const res = await axios.post("https://backend-book-my-stay.vercel.app/api/book", bookingDetails);
                 if (res.data.message) {
                     navigate("/bookingsuccess");
                 } else {
