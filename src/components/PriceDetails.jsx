@@ -46,7 +46,7 @@ function PriceDetails({ roomdetail }) {
 
     return (
         <div className="flex justify-center w-full px-4">
-            <div className="w-full max-w-xl bg-white rounded-2xl shadow-lg p-6 space-y-6 border border-gray-200">
+            <div className="w-120 max-w-5xl bg-white rounded-2xl shadow-lg p-8 space-y-6 border border-gray-200">
                 <div className="flex justify-between items-center">
                     <div className="flex items-baseline space-x-1">
                         <h2 className="text-3xl font-bold text-gray-800">${roomdetail.price}</h2>
@@ -58,8 +58,8 @@ function PriceDetails({ roomdetail }) {
                     </h3>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-4">
-                    <div className="w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
                         <label className="mb-1 block text-sm font-medium text-gray-700">Check-in</label>
                         <input
                             type="date"
@@ -68,7 +68,7 @@ function PriceDetails({ roomdetail }) {
                             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
                         />
                     </div>
-                    <div className="w-full">
+                    <div>
                         <label className="mb-1 block text-sm font-medium text-gray-700">Check-out</label>
                         <input
                             type="date"
@@ -132,7 +132,7 @@ function PriceDetails({ roomdetail }) {
                             </div>
                         </div>
 
-                        <div className="mt-6">
+                        <div className="mt-6 w-90">
                             <StripeCheckout
                                 totalAmount={calculateTotalPrice()}
                                 bookingDetails={{

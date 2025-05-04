@@ -121,7 +121,7 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
                         loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
                     }`}
                 >
-                    {loading ? "Processing Payment..." : `Pay ₹${amount}`}
+                    {loading ? "Processing Payment..." : `Pay $${amount}`}
                 </button>
             </form>
         </div>

@@ -9,19 +9,24 @@ function Newpage({ hotelData }) {
   const [activeTab, setActiveTab] = useState('description');
 
   return (
-    <div className="bg-white w-full px-6 md:px-12 lg:px-20 py-10">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-sm text-gray-600 flex items-center gap-1">
-          <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
-          {hotelData?.starRating} • 128 reviews
-        </p>
+    <div className="bg-white w-full py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+ 
+        <div className="space-y-2">
+          <p className="text-sm text-gray-600 flex items-center gap-1">
+            <FontAwesomeIcon icon={faStar} className="text-yellow-400" />
+            {hotelData?.starRating} • 128 reviews
+          </p>
 
-        <h2 className="text-3xl md:text-4xl text-black font-bold mt-2">{hotelData?.name}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-black">
+            {hotelData?.name}
+          </h2>
 
-        <p className="text-gray-600 mt-2 flex items-center gap-1">
-          <FontAwesomeIcon icon={faLocationDot} className="text-blue-400" />
-          {hotelData?.city}
-        </p>
+          <p className="text-gray-600 flex items-center gap-1">
+            <FontAwesomeIcon icon={faLocationDot} className="text-blue-400" />
+            {hotelData?.city}
+          </p>
+        </div>
 
         {/* Overview Boxes */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
@@ -29,9 +34,12 @@ function Newpage({ hotelData }) {
             { label: 'Bedroom', value: 1 },
             { label: 'Beds', value: 2 },
             { label: 'Washroom', value: 1 },
-            { label: 'Guests', value: 3 }
+            { label: 'Guests', value: 3 },
           ].map((item, index) => (
-            <div key={index} className="p-4 bg-gray-100 text-center rounded-lg border border-gray-300">
+            <div
+              key={index}
+              className="p-4 bg-gray-100 text-center rounded-lg border border-gray-300"
+            >
               <h2 className="font-bold text-xl">{item.value}</h2>
               <p className="text-sm text-gray-600">{item.label}</p>
             </div>
@@ -40,7 +48,7 @@ function Newpage({ hotelData }) {
 
         {/* Tabs */}
         <div className="flex mt-10 border-b border-gray-200 overflow-x-auto">
-          {['description', 'amenities', 'policies'].map(tab => (
+          {['description', 'amenities', 'policies'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -77,7 +85,7 @@ function Newpage({ hotelData }) {
                   { icon: faMugSaucer, label: 'Breakfast Included' },
                   { icon: faUtensils, label: 'Restaurant' },
                   { icon: faFan, label: 'Air Conditioning' },
-                  { icon: faTv, label: 'TV' }
+                  { icon: faTv, label: 'TV' },
                 ].map((item, index) => (
                   <div key={index} className="flex items-center gap-2 text-sm">
                     <FontAwesomeIcon icon={item.icon} className="text-blue-400" />
@@ -107,7 +115,7 @@ function Newpage({ hotelData }) {
 
               <div>
                 <h4 className="font-semibold">House Rules</h4>
-                <ul className="list-disc list-inside mt-2">
+                <ul className="list-disc list-inside mt-2 space-y-1">
                   <li>No smoking</li>
                   <li>No parties or events</li>
                   <li>Pets not allowed</li>
