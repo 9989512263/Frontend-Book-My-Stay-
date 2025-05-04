@@ -4,8 +4,6 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
-
 function Resetpassword() {
     const navigate = useNavigate();
     const [password, setPassword] = useState('');
@@ -21,7 +19,6 @@ function Resetpassword() {
             return;
         }
 
-
         if (!email) {
             toast.error("Email is missing. Please restart the reset process.");
             return;
@@ -35,7 +32,6 @@ function Resetpassword() {
 
             if (response.data.message) {
                 toast.success("Password changed successfully");
-                // localStorage.removeItem('resetEmail');
                 setTimeout(() => {
                     navigate('/resetsuccess');
                 }, 3000);

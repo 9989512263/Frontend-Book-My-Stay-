@@ -5,6 +5,7 @@ import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 function Resetsuccess() {
     const navigate = useNavigate();
+
     return (
         <div>
             <div className="relative flex h-screen w-full">
@@ -22,21 +23,22 @@ function Resetsuccess() {
                     <p className='text-gray-400 text-sm font-semibold'>Find and book your perfect accommodation anywhere in the world.</p>
                 </div>
             </div>
-            <div className="bg-gray-200 h-screen w-full flex items-center justify-centeritems-center justify-center">
+            <div className="bg-gray-200 h-screen w-full flex items-center justify-center">
 
-
-                <div class="bg-white h-100 w-120 rounded-md items-center justify-center  flex flex-col">
+                <div className="bg-white h-auto w-120 rounded-md items-center justify-center flex flex-col px-8 py-6">
                     <div>
                         <FontAwesomeIcon icon={faCircleCheck} size='5x' style={{ color: "#74C0FC" }} />
                     </div>
-                    <h1 className="text-4xl font-bold">Success!</h1>
+                    <h1 className="text-4xl font-bold mt-4">Success!</h1>
                     <p className="text-sm text-gray-600 mt-1">Your password has been reset successfully</p>
                     <div className="h-10 w-100 flex items-center justify-center mt-10">
                         <p className="text-base text-gray-800 text-center">
                             You can now use your new password to sign in to your account.
                         </p>
                     </div>
-                    <button onClick={() => navigate('/signin')} className="w-40 mt-10 h-10 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 text-sm font-semibold">Return to Sign In</button>
+                    <button onClick={() => navigate('/signin')} className="w-40 mt-10 h-10 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 text-sm font-semibold">
+                        Return to Sign In
+                    </button>
                 </div>
             </div>
         </div>

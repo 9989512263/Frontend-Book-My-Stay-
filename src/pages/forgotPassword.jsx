@@ -4,7 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 function ForgotPassword() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -41,7 +40,6 @@ function ForgotPassword() {
         navigate('/signin');
     };
 
-
     return (
         <div className="justify-between flex ">
             <div className="relative flex h-screen w-full">
@@ -73,7 +71,6 @@ function ForgotPassword() {
                     />
                     <button
                         type="submit"
-
                         className="w-110 h-10 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition duration-300 text-sm font-semibold"
                     >
                         Send Verification Code
@@ -98,13 +95,8 @@ function ForgotPassword() {
                 >
                     ← Back to Sign In
                 </span>
-
-
             </div>
-
         </div>
-
-
     )
 };
 

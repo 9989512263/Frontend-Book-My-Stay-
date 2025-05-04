@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function Verifycode() {
     const navigate = useNavigate();
     const [otp, setOtp] = useState('');
-    const [email] = useState(localStorage.getItem("resetEmail") || (''));
+    const [email] = useState(localStorage.getItem("resetEmail") || '');
 
     const handleSendCode = async (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ function Verifycode() {
                     className="max-w-full h-auto object-cover w-full bg-gradient-to-t"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
-                <div className="absolute top-10 left-4 flex  bg-opacity-40">
+                <div className="absolute top-10 left-4 flex bg-opacity-40">
                     <h2 className="text-white text-3xl font-extrabold">BookMyStay</h2>
                 </div>
                 <div className='absolute bottom-20 left-6 flex flex-col gap-3 bg-opacity-40'>
@@ -97,7 +97,6 @@ function Verifycode() {
                             "bg-blue-100 text-blue-800 text-sm font-medium px-6 py-3 rounded-md shadow-sm"
                         }
                     />
-
                 </form>
                 <span
                     onClick={handleBackToSignIn}
