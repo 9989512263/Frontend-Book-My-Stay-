@@ -72,7 +72,7 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto mt-10 p-6 border border-gray-200 shadow-md bg-white rounded-lg">
+        <div className="w-full max-w-lg mx-auto mt-10 p-6 border border-gray-200 shadow-md bg-white rounded-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label className="block mb-2 text-sm font-semibold text-gray-700">
@@ -82,14 +82,16 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
                         options={{
                             style: {
                                 base: {
-                                    fontSize: '16px',
+                                    fontSize: '18px',           // Increase font size
                                     color: '#333',
                                     letterSpacing: '0.025em',
                                     fontFamily: 'Arial, sans-serif',
                                     '::placeholder': {
                                         color: '#a0aec0',
                                     },
-                                    padding: '12px 16px'
+                                    padding: '14px 20px',       // Increase padding for better spacing
+                                    height: '48px',             // Set a fixed height for the field
+                                    width: '100%',              // Make it take full width
                                 },
                                 invalid: {
                                     color: '#e53e3e',
