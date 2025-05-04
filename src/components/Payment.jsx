@@ -53,7 +53,10 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
         } else if (result.paymentIntent.status === "succeeded") {
             setPaymentStatus("succeeded");
             try {
-                const res = await axios.post("https://backend-book-my-stay-production.up.railway.app/api/book", bookingDetails);
+                const res = await axios.post(
+                    "https://backend-book-my-stay-production.up.railway.app/api/book",
+                    bookingDetails
+                );
                 if (res.data.message) {
                     navigate("/bookingsuccess");
                 } else {
@@ -69,13 +72,32 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
     };
 
     return (
-        <div className="max-w-lg mx-auto mt-10 p-6 border border-gray-200 shadow-md bg-white rounded-lg">
+        <div className="w-full max-w-md mx-auto mt-10 p-6 border border-gray-200 shadow-md bg-white rounded-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                     <label className="block mb-2 text-sm font-semibold text-gray-700">
                         Card Information
                     </label>
-                    <CardElement className="p-3 border border-gray-300 rounded-md" />
+                    <CardElement
+                        options={{
+                            style: {
+                                base: {
+                                    fontSize: '16px',
+                                    color: '#333',
+                                    letterSpacing: '0.025em',
+                                    fontFamily: 'Arial, sans-serif',
+                                    '::placeholder': {
+                                        color: '#a0aec0',
+                                    },
+                                    padding: '12px 16px'
+                                },
+                                invalid: {
+                                    color: '#e53e3e',
+                                },
+                            },
+                        }}
+                        className="w-full p-3 border border-gray-300 rounded-md bg-white"
+                    />
                 </div>
 
                 {error && (
