@@ -131,7 +131,7 @@ function Signin({ setisAuthenticated }) {
                         Sign up
                     </span>
                 </p>
-                <ToastContainer toastClassName="text-sm font-semibold text-black" position="bottom-right" autoClose={3000} />
+                <ToastContainer toastClassName="text-sm font-semibold text-black" position="top-right" autoClose={3000} />
 
             </div>
         </div>
