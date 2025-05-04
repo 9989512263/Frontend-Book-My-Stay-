@@ -9,7 +9,6 @@ import {
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const stripePromise = loadStripe("pk_test_51RK23tJiTAK6oe07vw1C8L7nBHNhRG6JWwcbDfBh92ED5jpJksOGdF0dmS0as5ocInvtrMUB7UG686NS2tUvPCkB00ITDP1l0z");
 
 const CheckoutForm = ({ amount, bookingDetails }) => {
@@ -24,12 +23,10 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
     useEffect(() => {
         axios
             .post("https://backend-book-my-stay-production.up.railway.app/api/payment", { amount })
-            .then((res) => {
-                setClientSecret(res.data.clientSecret);
-            })
+            .then((res) => setClientSecret(res.data.clientSecret))
             .catch((err) => {
-                console.error("Error creating payment intent:", err);
-                setError("An error occurred while setting up the payment.");
+                console.error("Payment setup failed:", err);
+                setError("Failed to initialize payment. Please try again.");
             });
     }, [amount]);
 
@@ -39,6 +36,7 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
 
         setLoading(true);
         setPaymentStatus("");
+        setError("");
 
         const result = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -54,19 +52,16 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
             setPaymentStatus("failed");
         } else if (result.paymentIntent.status === "succeeded") {
             setPaymentStatus("succeeded");
-            setError("");
-
-            // ✅ Send booking details to backend
             try {
                 const res = await axios.post("https://backend-book-my-stay-production.up.railway.app/api/book", bookingDetails);
                 if (res.data.message) {
                     navigate("/bookingsuccess");
                 } else {
-                    setError("Booking failed after payment.");
+                    setError("Payment succeeded, but booking failed.");
                 }
             } catch (err) {
-                console.error("Booking save failed:", err);
-                setError("Payment succeeded, but booking failed.");
+                console.error("Booking error:", err);
+                setError("Payment succeeded, but booking could not be completed.");
             }
         }
 
@@ -74,42 +69,45 @@ const CheckoutForm = ({ amount, bookingDetails }) => {
     };
 
     return (
-        <div className="max-w-md mx-auto p-6 border rounded shadow-lg bg-white">
-            <form onSubmit={handleSubmit}>
-                <div className="mb-6">
-                    <CardElement className="p-3 border-2 border-gray-300 rounded-lg" />
+        <div className="max-w-lg mx-auto mt-10 p-6 border border-gray-200 shadow-md bg-white rounded-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                    <label className="block mb-2 text-sm font-semibold text-gray-700">
+                        Card Information
+                    </label>
+                    <CardElement className="p-3 border border-gray-300 rounded-md" />
                 </div>
 
                 {error && (
-                    <div className="text-red-500 text-sm mb-4 p-2 bg-red-100 rounded">
+                    <div className="text-red-600 text-sm p-2 bg-red-100 border border-red-200 rounded">
                         {error}
                     </div>
                 )}
 
                 {paymentStatus === "succeeded" && (
-                    <div className="text-green-500 text-sm mb-4 p-2 bg-green-100 rounded">
-                        Payment successful!
+                    <div className="text-green-600 text-sm p-2 bg-green-100 border border-green-200 rounded">
+                        Payment successful! Redirecting...
                     </div>
                 )}
 
                 <button
                     type="submit"
                     disabled={!stripe || loading}
-                    className={`w-full py-3 px-4 font-semibold rounded-lg text-white ${
-                        loading ? 'bg-gray-400' : 'bg-blue-600 hover:bg-blue-700'
+                    className={`w-full py-3 px-5 font-semibold text-white rounded-md transition duration-300 ${
+                        loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
                     }`}
                 >
-                    {loading ? "Processing..." : "Pay Now"}
+                    {loading ? "Processing Payment..." : `Pay ₹${amount}`}
                 </button>
             </form>
         </div>
     );
 };
 
-
 const StripeCheckout = ({ totalAmount, bookingDetails }) => (
     <Elements stripe={stripePromise}>
         <CheckoutForm amount={totalAmount} bookingDetails={bookingDetails} />
     </Elements>
 );
+
 export default StripeCheckout;
